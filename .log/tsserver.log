@@ -1,0 +1,93 @@
+Info 0    [13:35:23.337] Starting TS Server
+Info 1    [13:35:23.338] Version: 3.8.3
+Info 2    [13:35:23.338] Arguments: /usr/bin/node /home/puggi/.npm-global/bin/tsserver --logFile /home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/.log/tsserver.log --logVerbosity info --cancellationPipeName /tmp/557a6f857eacc1c48f0e450b10adf00d/tscancellation*
+Info 3    [13:35:23.338] Platform: linux NodeVersion: 13 CaseSensitive: true
+Info 4    [13:35:23.352] Search path: /home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/js
+Info 5    [13:35:23.353] For info: /home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/js/my-location.js :: No config files found.
+Info 6    [13:35:23.357] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 7    [13:35:24.510] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true Elapsed: 1153ms
+Info 8    [13:35:24.510] Project '/dev/null/inferredProject1*' (Inferred) 
+Info 9    [13:35:24.510] 	Files (6)
+
+Info 10   [13:35:24.510] -----------------------------------------------
+Info 11   [13:35:25.372] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 12   [13:35:25.376] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 2 structureChanged: false Elapsed: 3ms
+Info 13   [13:35:25.376] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 14   [13:35:25.378] Structure before ensureProjectForOpenFiles:
+Info 15   [13:35:25.378] Structure after ensureProjectForOpenFiles:
+Info 16   [13:35:25.378] got projects updated in background, updating diagnostics for /home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/js/my-location.js
+Info 17   [13:37:51.464] Search path: /home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/lib/stamen
+Info 18   [13:37:51.465] For info: /home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/lib/stamen/tile.stamen.js :: No config files found.
+Info 19   [13:37:51.466] Starting updateGraphWorker: Project: /dev/null/inferredProject2*
+Info 20   [13:37:51.510] Finishing updateGraphWorker: Project: /dev/null/inferredProject2* Version: 1 structureChanged: true Elapsed: 44ms
+Info 21   [13:37:51.510] Project '/dev/null/inferredProject2*' (Inferred) 
+Info 22   [13:37:51.510] 	Files (6)
+
+Info 23   [13:37:51.510] -----------------------------------------------
+Info 24   [13:37:51.664] Starting updateGraphWorker: Project: /dev/null/inferredProject2*
+Info 25   [13:37:51.670] Finishing updateGraphWorker: Project: /dev/null/inferredProject2* Version: 2 structureChanged: false Elapsed: 6ms
+Info 26   [13:37:51.670] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 27   [13:37:51.865] Structure before ensureProjectForOpenFiles:
+Info 28   [13:37:51.865] Structure after ensureProjectForOpenFiles:
+Info 29   [13:37:51.865] got projects updated in background, updating diagnostics for /home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/js/my-location.js,/home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/lib/stamen/tile.stamen.js
+Info 30   [14:3:37.440] Search path: /home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/js
+Info 31   [14:3:37.440] For info: /home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/js/non-earth.js :: No config files found.
+Info 32   [14:3:37.441] Starting updateGraphWorker: Project: /dev/null/inferredProject3*
+Info 33   [14:3:37.455] Finishing updateGraphWorker: Project: /dev/null/inferredProject3* Version: 1 structureChanged: true Elapsed: 14ms
+Info 34   [14:3:37.455] Project '/dev/null/inferredProject3*' (Inferred) 
+Info 35   [14:3:37.455] 	Files (6)
+
+Info 36   [14:3:37.455] -----------------------------------------------
+Info 37   [14:3:37.456] `remove Project::
+Info 38   [14:3:37.456] Project '/dev/null/inferredProject2*' (Inferred) 
+Info 39   [14:3:37.456] 	Files (6)
+
+Info 40   [14:3:37.456] -----------------------------------------------
+Info 41   [14:3:37.641] Starting updateGraphWorker: Project: /dev/null/inferredProject3*
+Info 42   [14:3:37.643] Finishing updateGraphWorker: Project: /dev/null/inferredProject3* Version: 2 structureChanged: false Elapsed: 2ms
+Info 43   [14:3:37.643] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 44   [14:3:37.807] Structure before ensureProjectForOpenFiles:
+Info 45   [14:3:37.808] Structure after ensureProjectForOpenFiles:
+Info 46   [14:3:37.808] got projects updated in background, updating diagnostics for /home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/js/my-location.js,/home/puggi/Nextcloud/Workspace/Designing_interactions/snowballing/js/non-earth.js
+Info 47   [14:18:25.624] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 48   [14:18:25.636] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 3 structureChanged: false Elapsed: 11ms
+Info 49   [14:18:25.636] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 50   [14:18:30.629] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 51   [14:18:30.632] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 4 structureChanged: false Elapsed: 3ms
+Info 52   [14:18:30.632] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 53   [14:18:30.906] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 54   [14:18:30.909] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 5 structureChanged: false Elapsed: 3ms
+Info 55   [14:18:30.909] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 56   [14:18:31.879] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 57   [14:18:31.884] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 6 structureChanged: false Elapsed: 5ms
+Info 58   [14:18:31.884] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 59   [14:18:32.143] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 60   [14:18:32.147] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 7 structureChanged: false Elapsed: 4ms
+Info 61   [14:18:32.147] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 62   [14:18:33.368] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 63   [14:18:33.371] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 8 structureChanged: false Elapsed: 3ms
+Info 64   [14:18:33.371] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 65   [14:18:39.178] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 66   [14:18:39.181] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 9 structureChanged: false Elapsed: 3ms
+Info 67   [14:18:39.181] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 68   [14:18:39.553] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 69   [14:18:39.558] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 10 structureChanged: false Elapsed: 5ms
+Info 70   [14:18:39.558] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 71   [14:18:40.905] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 72   [14:18:40.911] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 11 structureChanged: false Elapsed: 6ms
+Info 73   [14:18:40.911] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 74   [14:18:41.349] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 75   [14:18:41.354] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 12 structureChanged: false Elapsed: 5ms
+Info 76   [14:18:41.354] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 77   [14:18:41.900] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 78   [14:18:41.904] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 13 structureChanged: false Elapsed: 4ms
+Info 79   [14:18:41.904] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 80   [14:18:42.176] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 81   [14:18:42.180] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 14 structureChanged: false Elapsed: 4ms
+Info 82   [14:18:42.180] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 83   [14:18:42.432] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 84   [14:18:42.435] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 15 structureChanged: false Elapsed: 3ms
+Info 85   [14:18:42.435] Different program with same set of files:: oldProgram.structureIsReused:: 2
+Info 86   [14:18:42.924] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 87   [14:18:42.927] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 16 structureChanged: false Elapsed: 3ms
+Info 88   [14:18:42.927] Different program with same set of files:: oldProgram.structureIsReused:: 2

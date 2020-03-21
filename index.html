@@ -4,30 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content=
   "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Simple Mapping</title>
+  <title>GPS mood</title><!--leaflet CSS, followed by ours-->
+  <link rel="stylesheet" href="lib/leaflet/leaflet.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="index_menu">
-    <h2>Simple mapping experiments</h2>
-    <ul>
-      <li>
-        <a href="my-location.html">Map 1 - My Location</a>
-      </li>
-      <li>
-        <a href="point-dropper.html">Map 2 - Point Dropper</a>
-      </li>
-      <li>
-        <a href="point-dropper-save.html">Map 3 - Point Dropper
-        with saving points</a>
-      </li>
-      <li>
-        <a href="non-earth.html">Map 4 - Non-earth map</a>
-      </li>
-      <li>
-        <a href="my-location.html">Map 5 - My Location</a>
-      </li>
-    </ul>
-  </div>
+  <!--the div that holds the map-->
+  <div id="map"></div>
+  <!--leaflet js library, stamen map layer library, followed by our script-->
+  <script src="lib/leaflet/leaflet.js"></script>
+  <script src="lib/stamen/tile.stamen.js"></script>
+  <!--link to the script for map 1-->
+
+  <script src="js/gps-mood.js"></script>
 </body>
 </html>
