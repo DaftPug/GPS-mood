@@ -48,6 +48,31 @@ var target = document.getElementById("map");
 
 // Creating the new spinner
 var spinner = new Spin.Spinner(opts).spin(target);
+spinner.stop();
+
+var emojilist = [
+  "angry",
+  "confused",
+  "crying",
+  "delighted",
+  "embarrassed",
+  "happy",
+  "love",
+  "sad",
+];
+
+var numberlist = [
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+];
+
+var colorlist = ["blue", "green", "orange", "purple", "red", "yellow"];
 
 //make a new map
 var map = L.map("map").fitWorld();
@@ -110,8 +135,8 @@ function onLocationError(e) {
 map.on("click", addMarker);
 
 function addMarker(e) {
-  // spinner.spin(target)
-  spinner.stop();
+  spinner.spin(target);
+  // spinner.stop();
 
   trigger = true;
   whiteEarthLayer.remove();
@@ -128,26 +153,52 @@ function addMarker(e) {
 }
 
 // Rightclick to open radial menu
-map.on("contextmenu", createEmojiRadial);
+map.on("contextmenu", createRadial("emoji"));
 
 // Function that creates the HTML code for the radial menu
-function createEmojiRadial() {
+function createRadial(radialType) {
   let targetDiv = document.getElementById("map");
+  let oldDiv = document.getElementById("radial");
   let oldUl = document.getElementById("UL");
   let oldSvg = document.getElementById("SVG");
+  if (oldDiv != null) {
+    oldDiv.remove();
+  }
   if (oldUl != null) {
     oldUl.remove();
   }
   if (oldSvg != null) {
     oldSvg.remove();
   }
+  let newDiv = document.createElement("div");
+  newDiv.setAttribute("class", "super");
+  newDiv.setAttribute("id", "radial");
+  newDiv.setAttribute(
+    "style",
+    "position: absolute; display: block; width: 0px; z-index: 2000000000; margin: auto; transform: scale(1);"
+  );
+  // position: absolute;
+  // width: 0px;
+  // z-index: 2000000000;
+  // left: 50%;
+  // top: 50%;
+  // transform: scale(1);
   let ul = document.createElement("ul");
   ul.setAttribute("id", "UL");
-  ul.setAttribute("class", "menu");
-  createEmojiList(ul);
-  svg = createSVG("emoji");
-  targetDiv.append(ul);
-  targetDiv.append(svg);
+  let svg;
+  if (radialType == "emoji") {
+    ul.setAttribute("class", "menu");
+    createEmojiList(ul);
+    svg = createSVG("emoji");
+  }
+  if (radialType == "color") {
+    ul.setAttribute("class", "cmenu");
+    createColorList(ul);
+    svg = createSVG("color");
+  }
+  newDiv.append(ul);
+  newDiv.append(svg);
+  targetDiv.append(newDiv);
 }
 
 function createSVG(type) {
@@ -170,6 +221,9 @@ function createSVG(type) {
       "M0.5,0.5 l0.5,0 A0.5,0.5 0 0,0 0.853553390593274,0.146446609406726 z"
     );
   }
+  if (type == "color") {
+    path.setAttribute("d", "M0.5,0.5 l0.5,0 A0.5,0.5 0 0,0 0.75,.066987298 z");
+  }
   // implement else if for colors
   clipPath.append(path);
   defs.append(clipPath);
@@ -185,11 +239,15 @@ function createEmojiList(ul) {
     li.setAttribute("class", numberlist[i]);
     let a = document.createElement("a");
     a.setAttribute("href", "#");
+    let emojiClick = 'emojiClicked("' + emojilist[i] + '")';
+    a.setAttribute("onclick", emojiClick);
     let span = document.createElement("span");
     span.setAttribute("class", "icon");
     let img = document.createElement("img");
     let imgSrc = "/icons/" + emojilist[i] + "/" + emojilist[i] + ".png";
     img.setAttribute("src", imgSrc);
+    img.setAttribute("height", "50");
+    img.setAttribute("width", "50");
     span.append(img);
     a.append(span);
     li.append(a);
@@ -197,30 +255,26 @@ function createEmojiList(ul) {
   }
 }
 
-var numberlist = [
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-];
-
-var emojilist = [
-  "angry",
-  "confused",
-  "crying",
-  "delighted",
-  "embarrassed",
-  "happy",
-  "love",
-  "sad",
-];
-
 // Support function to createRadial
 // - creates 8 <li> elements with the 6 chosen colors
-function createColorList() {}
+function createColorList(ul) {
+  for (let i = 0; i < colorlist.length; i++) {
+    let li = document.createElement("li");
+    li.setAttribute("class", "c" + numberlist[i]);
+    let a = document.createElement("a");
+    a.setAttribute("href", "#");
+    let colorClick = 'colorClicked("' + colorlist[i] + '")';
+    a.setAttribute("onclick", colorClick);
+    let span = document.createElement("span");
+    span.setAttribute("class", "icon");
+    a.append(span);
+    li.append(a);
+    ul.append(li);
+  }
+}
 
-var colorlist = ["blue", "green", "orange", "purple", "red", "yellow"];
+function emojiClicked(emoji) {
+  createRadial("color");
+}
+
+function colorClicked(color) {}

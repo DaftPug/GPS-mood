@@ -1,34 +1,46 @@
-@import url(//fonts.googleapis.com/css?family=Indie+Flower);
+@import url(//fonts.googleapis.com/css?family=Indie + Flower);
 
 body {
-	padding: 0;
-	margin: 0;
-	font-family: "helvetica neue", helvetica, arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
 }
-html, body, #map {
-	height: 100%;
-	width: 100vw;
+html,
+body,
+#map {
+  height: 100%;
+  width: 100vw;
 }
 
 #index_menu {
-	display:block;
-	margin: 2em;
+  display: block;
+  margin: 2em;
 }
 
-button{
-	position: absolute;
-	clear:both;
-	z-index: 10000;
-	top: 10px;
+button {
+  position: absolute;
+  clear: both;
+  z-index: 10000;
+  top: 10px;
 }
-button#save{
-	left: 50px;
+button#save {
+  left: 50px;
 }
-button#clear{
-	left: 120px;
+button#clear {
+  left: 120px;
 }
 
 .menu {
+  padding: 0;
+  list-style: none;
+  position: relative;
+  margin: 30px auto;
+  width: 70%;
+  height: 0;
+  padding-top: 70%;
+}
+
+.cmenu {
   padding: 0;
   list-style: none;
   position: relative;
@@ -44,9 +56,21 @@ button#clear{
     height: 230px;
     padding: 0;
   }
+
+  .cmenu {
+    width: 230px;
+    height: 230px;
+    padding: 0;
+  }
 }
 @media all and (min-width: 700px) {
   .menu {
+    width: 500px;
+    height: 500px;
+    padding: 0;
+  }
+
+  .cmenu {
     width: 500px;
     height: 500px;
     padding: 0;
@@ -59,10 +83,10 @@ button#clear{
   width: 100%;
   height: 100%;
   -webkit-clip-path: url(#sector);
-          clip-path: url(#sector);
+  clip-path: url(#sector);
   /* try this one in Chrome/Opera/Safari */
   -webkit-clip-path: polygon(50% 50%, 100% 50%, 85% 14.6%);
-          clip-path: polygon(50% 50%, 100% 50%, 85% 14.6%);
+  clip-path: polygon(50% 50%, 100% 50%, 85% 14.6%);
 }
 .menu li a {
   display: block;
@@ -73,52 +97,109 @@ button#clear{
   background-color: gold;
 }
 
+.cmenu li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-clip-path: url(#sector);
+  clip-path: url(#sector);
+  /* try this one in Chrome/Opera/Safari */
+  -webkit-clip-path: polygon(50% 50%, 100% 50%, 75% 6.6%);
+  clip-path: polygon(50% 50%, 100% 50%, 75% 6.6%);
+}
+.cmenu li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.cmenu li:hover {
+  background-color: gold;
+}
+
 .one {
   background-color: #f7a3f3;
   -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
+  transform: rotate(0deg);
 }
 
 .two {
   background-color: #f482ef;
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .three {
   background-color: #f161ea;
   -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
 .four {
   background-color: #ee40e6;
   -webkit-transform: rotate(-135deg);
-          transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }
 
 .five {
   background-color: #ec20e2;
   -webkit-transform: rotate(-180deg);
-          transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 
 .six {
   background-color: #d513cc;
   -webkit-transform: rotate(-225deg);
-          transform: rotate(-225deg);
+  transform: rotate(-225deg);
 }
 
 .seven {
   background-color: #b410ac;
   -webkit-transform: rotate(-270deg);
-          transform: rotate(-270deg);
+  transform: rotate(-270deg);
 }
 
 .eight {
   background-color: #930d8d;
   -webkit-transform: rotate(-315deg);
-          transform: rotate(-315deg);
+  transform: rotate(-315deg);
+}
+
+.cone {
+  background-color: #a5e2f3;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.ctwo {
+  background-color: #86d8ef;
+  -webkit-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+}
+
+.cthree {
+  background-color: #66ceeb;
+  -webkit-transform: rotate(-120deg);
+  transform: rotate(-120deg);
+}
+
+.cfour {
+  background-color: #47c4e6;
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+.cfive {
+  background-color: #27b9e2;
+  -webkit-transform: rotate(-240deg);
+  transform: rotate(-240deg);
+}
+
+.csix {
+  background-color: #1ba4cb;
+  -webkit-transform: rotate(-300deg);
+  transform: rotate(-300deg);
 }
 
 .icon {
@@ -128,7 +209,7 @@ button#clear{
   top: 30%;
   /* make sure it it rotated enough; angle of rotation = angle of the sector itself */
   -webkit-transform: rotate(60deg);
-          transform: rotate(60deg);
+  transform: rotate(60deg);
   /* style further as needed */
   color: #60085c;
   font-family: Indie Flower;
