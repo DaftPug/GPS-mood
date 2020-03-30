@@ -115,7 +115,7 @@ button#clear {
   height: 100%;
 }
 .cmenu li:hover {
-  background-color: gold;
+  background-color: gray;
 }
 
 .one {
@@ -167,37 +167,37 @@ button#clear {
 }
 
 .cone {
-  background-color: #a5e2f3;
+  background-color: white;
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
 }
 
 .ctwo {
-  background-color: #86d8ef;
+  background-color: white;
   -webkit-transform: rotate(-60deg);
   transform: rotate(-60deg);
 }
 
 .cthree {
-  background-color: #66ceeb;
+  background-color: white;
   -webkit-transform: rotate(-120deg);
   transform: rotate(-120deg);
 }
 
 .cfour {
-  background-color: #47c4e6;
+  background-color: white;
   -webkit-transform: rotate(-180deg);
   transform: rotate(-180deg);
 }
 
 .cfive {
-  background-color: #27b9e2;
+  background-color: white;
   -webkit-transform: rotate(-240deg);
   transform: rotate(-240deg);
 }
 
 .csix {
-  background-color: #1ba4cb;
+  background-color: white;
   -webkit-transform: rotate(-300deg);
   transform: rotate(-300deg);
 }
