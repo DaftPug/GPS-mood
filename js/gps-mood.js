@@ -131,6 +131,161 @@ map.on("locationfound", onLocationFound);
 //if there is a location error, run "onLocationError"
 map.on("locationerror", onLocationError);
 
+// Create toolbar for cheating/simulating no gps signal
+var ImmediateSubAction = L.Toolbar2.Action.extend({
+  initialize: function (map, myAction) {
+    this.map = map;
+    this.myAction = myAction;
+    L.Toolbar2.Action.prototype.initialize.call(this);
+  },
+  addHooks: function () {
+    this.myAction.disable();
+  },
+});
+var World = ImmediateSubAction.extend({
+  options: {
+    toolbarIcon: {
+      html: "World",
+      tooltip: "See the whole world",
+    },
+  },
+  addHooks: function () {
+    this.map.setView([0, 0], 0);
+    ImmediateSubAction.prototype.addHooks.call(this);
+  },
+});
+var Eiffel = ImmediateSubAction.extend({
+  options: {
+    toolbarIcon: {
+      html: "Eiffel Tower",
+      tooltip: "Go to the Eiffel Tower",
+    },
+  },
+  addHooks: function () {
+    this.map.setView([48.85815, 2.2942], 19);
+    ImmediateSubAction.prototype.addHooks.call(this);
+  },
+});
+
+var Cancel = ImmediateSubAction.extend({
+  options: {
+    toolbarIcon: {
+      html: '<i class="fa fa-times"></i>',
+      tooltip: "Cancel",
+    },
+  },
+});
+var MyCustomAction = L.Toolbar2.Action.extend({
+  options: {
+    toolbarIcon: {
+      className: "fa fa-eye",
+    },
+    /* Use L.Toolbar2 for sub-toolbars. A sub-toolbar is,
+     * by definition, contained inside another toolbar, so it
+     * doesn't need the additional styling and behavior of a
+     * L.Toolbar2.Control or L.Toolbar2.Popup.
+     */
+    subToolbar: new L.Toolbar2({
+      actions: [World, Eiffel, Cancel],
+    }),
+  },
+});
+
+var viewWorld = L.Toolbar2.Action.extend({
+  options: {
+    toolbarIcon: {
+      tooltip: "See the whole world",
+      className: "fa fa-globe",
+    },
+  },
+  addHooks: function () {
+    map.setView([0, 0], 0);
+  },
+});
+
+var myLocation = L.Toolbar2.Action.extend({
+  options: {
+    toolbarIcon: {
+      tooltip: "Goto your location",
+      className: "fa fa-map-marker",
+    },
+  },
+  addHooks: function () {
+    let lat = lastKnownLocation.lat;
+    let lng = lastKnownLocation.lng;
+    map.setView([lat, lng], 19);
+  },
+});
+
+var loseSignal = ImmediateSubAction.extend({
+  options: {
+    toolbarIcon: {
+      tooltip: "Simulate loss of GPS-signal",
+      html: "Lose signal",
+      // className: "fa fa-map-marker",
+    },
+  },
+  addHooks: function () {
+    whiteEarthLayer.remove();
+    stamenMap.addTo(map);
+    let markerIcon = L.icon({
+      iconUrl: "./icons/position.png",
+      iconSize: [50, 50],
+    });
+    marker = L.marker(lastKnownLocation, { icon: markerIcon }).addTo(map); // Create a new marker with our marker icon and the xy coordinates and add it to the map.
+    let lat = lastKnownLocation.lat;
+    let lng = lastKnownLocation.lng;
+    map.setView([lat, lng], 19);
+
+    createRadial("emoji");
+    ImmediateSubAction.prototype.addHooks.call(this);
+  },
+});
+
+var gainSignal = ImmediateSubAction.extend({
+  options: {
+    toolbarIcon: {
+      tooltip: "End simulation of loss of GPS-signal",
+      html: "Gain signal",
+      // className: "fa fa-map-marker",
+    },
+  },
+  addHooks: function () {
+    stamenMap.remove();
+    whiteEarthLayer.addTo(map);
+    if (typeof marker == "undefined") {
+      ImmediateSubAction.prototype.addHooks.call(this);
+    } else {
+      marker.remove();
+      let lat = lastKnownLocation.lat;
+      let lng = lastKnownLocation.lng;
+      map.setView([lat, lng], 19);
+      ImmediateSubAction.prototype.addHooks.call(this);
+    }
+  },
+});
+
+var signalMenu = L.Toolbar2.Action.extend({
+  options: {
+    toolbarIcon: {
+      className: "fa fa-signal",
+    },
+    /* Use L.Toolbar2 for sub-toolbars. A sub-toolbar is,
+     * by definition, contained inside another toolbar, so it
+     * doesn't need the additional styling and behavior of a
+     * L.Toolbar2.Control or L.Toolbar2.Popup.
+     */
+    subToolbar: new L.Toolbar2({
+      actions: [loseSignal, gainSignal, Cancel],
+    }),
+  },
+});
+
+new L.Toolbar2.Control({
+  position: "topleft",
+  actions: [viewWorld, myLocation, signalMenu],
+}).addTo(map);
+
 function getFiles() {
   let response = [];
   $.get("capitals.csv").done(function (data) {
@@ -158,6 +313,13 @@ function onLocationFound(e) {
   loadDemoMarkers(demoList);
   // gifOverlay.addTo(map)
 
+  if ("geolocation" in navigator) {
+    /* geolocation is available */
+    console.log("connected");
+  } else {
+    /* geolocation IS NOT available */
+    console.log("not connect");
+  }
   // var radius = e.accuracy / 2
   // // place a marker on the map at geolocated point:
   // L.marker(e.latlng)
@@ -174,50 +336,10 @@ function onLocationError(e) {
   createRadial("emoji");
 }
 
-//click on the map to add a marker
-map.on("click", addMarker);
-
-function addMarker(e) {
-  // spinner.spin(target);
-  // spinner.stop();
-  // trigger = true;
-  whiteEarthLayer.remove();
-  stamenMap.addTo(map);
-  // var date = new Date(); // Used if you want to get the current time
-
-  var xy = lastKnownLocation; // Set the last orientation sensor values as our x and y coordinates
-  map.panTo(xy);
-  map.setZoom(13);
-  var markerIcon = L.icon({
-    iconUrl: "./icons/position.png",
-    iconSize: [100, 100],
-  });
-  //var latlng = L.latLng((date.getSeconds() * 6) - 180, b); //Use this line instead to map the x axis to the current second number instead
-  // console.log(xy);
-  marker = L.marker(xy, { icon: markerIcon }).addTo(map); // Create a new marker with our marker icon and the xy coordinates and add it to the map.
-  // markers.push(xy) // Save our new marker to our list of markers
-
-  // var polygon = L.polygon(markers, {color: 'white'}).addTo(map); //Draw a polygon between all our markers
-}
-
-// Rightclick to open radial menu
-// map.on("contextmenu", createRadial("emoji"));
-
 // Function that creates the HTML code for the radial menu
 function createRadial(radialType, faceType = null) {
   let targetDiv = document.getElementById("map");
-  let oldDiv = document.getElementById("radial");
-  let oldUl = document.getElementById("UL");
-  let oldSvg = document.getElementById("SVG");
-  if (oldDiv != null) {
-    oldDiv.remove();
-  }
-  if (oldUl != null) {
-    oldUl.remove();
-  }
-  if (oldSvg != null) {
-    oldSvg.remove();
-  }
+  removeRadial();
   let newDiv = document.createElement("div");
   newDiv.setAttribute("class", "super");
   newDiv.setAttribute("id", "radial");
@@ -247,6 +369,21 @@ function createRadial(radialType, faceType = null) {
   newDiv.append(ul);
   newDiv.append(svg);
   targetDiv.append(newDiv);
+}
+
+function removeRadial() {
+  let oldDiv = document.getElementById("radial");
+  let oldUl = document.getElementById("UL");
+  let oldSvg = document.getElementById("SVG");
+  if (oldDiv != null) {
+    oldDiv.remove();
+  }
+  if (oldUl != null) {
+    oldUl.remove();
+  }
+  if (oldSvg != null) {
+    oldSvg.remove();
+  }
 }
 
 function createSVG(type) {
@@ -334,6 +471,10 @@ function emojiClicked(emoji) {
 function colorClicked(emoji, color) {
   emojiUrl = "./icons/" + emoji + "/" + color + ".png";
   addEmojiMarker(emojiUrl, lastKnownLocation);
+  if (typeof marker !== "undefined") {
+    marker.remove();
+  }
+  removeRadial();
 }
 
 function addEmojiMarker(emojiUrl, latlng) {
