@@ -228,15 +228,14 @@ var loseSignal = ImmediateSubAction.extend({
   addHooks: function () {
     whiteEarthLayer.remove();
     stamenMap.addTo(map);
-    let markerIcon = L.icon({
-      iconUrl: "./icons/position.png",
-      iconSize: [50, 50],
-    });
-    marker = L.marker(lastKnownLocation, { icon: markerIcon }).addTo(map); // Create a new marker with our marker icon and the xy coordinates and add it to the map.
+
+    if (typeof marker !== "undefined") {
+      marker.remove();
+    }
+
     let lat = lastKnownLocation.lat;
     let lng = lastKnownLocation.lng;
     map.setView([lat, lng], 19);
-
     createRadial("emoji");
     ImmediateSubAction.prototype.addHooks.call(this);
   },
@@ -253,15 +252,11 @@ var gainSignal = ImmediateSubAction.extend({
   addHooks: function () {
     stamenMap.remove();
     whiteEarthLayer.addTo(map);
-    if (typeof marker == "undefined") {
-      ImmediateSubAction.prototype.addHooks.call(this);
-    } else {
-      marker.remove();
-      let lat = lastKnownLocation.lat;
-      let lng = lastKnownLocation.lng;
-      map.setView([lat, lng], 19);
-      ImmediateSubAction.prototype.addHooks.call(this);
-    }
+    let markerIcon = L.icon({
+      iconUrl: "./icons/position.png",
+      iconSize: [50, 50],
+    });
+    marker = L.marker(lastKnownLocation, { icon: markerIcon }).addTo(map); // Create a new marker with our marker icon and the xy coordinates and add it to the map.
   },
 });
 
@@ -311,15 +306,16 @@ function onLocationFound(e) {
   lastKnownLocation = e.latlng;
   getFiles();
   loadDemoMarkers(demoList);
-  // gifOverlay.addTo(map)
+  let markerIcon = L.icon({
+    iconUrl: "./icons/position.png",
+    iconSize: [50, 50],
+  });
+  marker = L.marker(lastKnownLocation, { icon: markerIcon }).addTo(map); // Create a new marker with our marker icon and the xy coordinates and add it to the map.
+  let lat = lastKnownLocation.lat;
+  let lng = lastKnownLocation.lng;
+  map.setView([lat, lng], 19);
 
-  if ("geolocation" in navigator) {
-    /* geolocation is available */
-    console.log("connected");
-  } else {
-    /* geolocation IS NOT available */
-    console.log("not connect");
-  }
+  // gifOverlay.addTo(map)
   // var radius = e.accuracy / 2
   // // place a marker on the map at geolocated point:
   // L.marker(e.latlng)
